@@ -19,7 +19,7 @@ public class Main {
                 """;
         System.out.println(titulo);
 
-        inicio.clienteStart();
+        inicio.BarrioStart();
         
     }
 }

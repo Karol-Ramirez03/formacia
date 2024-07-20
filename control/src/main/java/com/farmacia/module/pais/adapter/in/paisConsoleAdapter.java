@@ -1,6 +1,7 @@
 package com.farmacia.module.pais.adapter.in;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 
@@ -8,6 +9,7 @@ import com.farmacia.module.pais.application.addpaisUseCase;
 import com.farmacia.module.pais.application.deleteUseCase;
 import com.farmacia.module.pais.application.updateUseCase;
 import com.farmacia.module.pais.domain.entity.Pais;
+import com.farmacia.module.tipodocumento.domain.entity.TipoDocumento;
 import com.farmacia.module.pais.application.findAllPaisUseCase;
 import com.farmacia.module.pais.application.findIdPaisUseCase;
 
@@ -43,30 +45,35 @@ public class paisConsoleAdapter {
 
             switch (choice) {
                 case 1:
-                    System.out.print(">> Ingrese el id del país: ");
-                    String id = scanner.nextLine();
                     System.out.print(">> Ingrese el nombre del país: ");
                     String nombre = scanner.nextLine();
                     
-                    Pais pais = new Pais(id, nombre);
+                    Pais pais = new Pais(nombre);
                     addPaisUseCase.execute(pais);
                     break;
 
                 case 2:
                     System.out.print(">> Ingrese el id del país: ");
-                    String idUpdate = scanner.nextLine();
+                    int idUpdate = scanner.nextInt();
 
                     updatePaisUseCase.execute(idUpdate);
                     break;
 
                 case 3:
                     System.out.print(">> Ingrese el id del país: ");
-                    String idfind = scanner.nextLine();
-                    findPaisByIdUseCase.execute(idfind);
-
+                    int idfind = scanner.nextInt();
+                    Optional<Pais> td = findPaisByIdUseCase.execute(idfind);
+                    
+                    if (td.isPresent()) {
+                        Pais ptd = td.get();
+                        System.out.println("Id: " + ptd.getId() + " NOMBRE: " + ptd.getNombre());
+                    } else {
+                        System.out.println("Cliente no encontrado.");
+                    }
+                break;
                 case 4:
                     System.out.print(">> Ingrese el id del país: ");
-                    String idEliminar = scanner.nextLine();
+                    int idEliminar = scanner.nextInt();
                     deletePaisUseCase.execute(idEliminar);
                     break;
 

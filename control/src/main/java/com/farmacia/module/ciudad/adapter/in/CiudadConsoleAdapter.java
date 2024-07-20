@@ -62,7 +62,7 @@ public void start() {
                     Optional<Ciudad> ciudadExistente = idCity.execute(idUpdate);
 
                     if (!ciudadExistente.isPresent()) {
-                        System.out.println("Cliente no encontrado.");
+                        System.out.println("ciudad no encontrado.");
                         break;
                     }
 
@@ -84,7 +84,7 @@ public void start() {
                                 
                                 break;
                             case 2:
-                                System.out.print(">> Ingrese los nuevos apellidos: ");
+                                System.out.print(">> Ingrese el id del pais: ");
                                 ciudadActual.setid_pais(scanner.nextInt());
                                 break;
                             case 3:
@@ -100,7 +100,7 @@ public void start() {
 
                 case 3:
                     
-                    System.out.print(">> Ingrese el id de la persona: ");
+                    System.out.print(">> Ingrese el id de la ciudad: ");
                     int idbuscar = scanner.nextInt();
                     Optional<Ciudad> Ciudadid = idCity.execute(idbuscar);
                     if (Ciudadid.isPresent()) {
@@ -113,7 +113,7 @@ public void start() {
                     break;
 
                 case 4:
-                        System.out.print(">> Ingrese el id de la persona: ");
+                        System.out.print(">> Ingrese el id de la ciudad: ");
                         int iddelete = scanner.nextInt();
                         deleteCity.execute(iddelete);
                     break;

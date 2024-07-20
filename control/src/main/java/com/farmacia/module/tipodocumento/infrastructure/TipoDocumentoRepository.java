@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 import com.farmacia.database.database;
@@ -22,7 +23,7 @@ public class TipoDocumentoRepository implements TipoDocumentoService {
         try (Connection connection = database.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
-            statement.setString(2, TipoDocumento.getNombre());
+            statement.setString(1, TipoDocumento.getNombre());
 
             statement.executeUpdate();
             System.out.println("tipodocumento creado: " + TipoDocumento.getNombre());
@@ -35,11 +36,11 @@ public class TipoDocumentoRepository implements TipoDocumentoService {
     }
 
     @Override
-    public void deleteTipoDocumento(String id) {
+    public void deleteTipoDocumento(int id) {
         String sql = "DELETE FROM tipodocumento WHERE id = ?";
         try (Connection connection = database.getConnection();
         PreparedStatement ps = connection.prepareStatement(sql)){
-            ps.setString(1, id);
+            ps.setInt(1, id);
             ps.executeUpdate();
             connection.close();
         } catch (SQLException e) {
@@ -72,27 +73,27 @@ public class TipoDocumentoRepository implements TipoDocumentoService {
     
 
     @Override
-    public TipoDocumento findTipoDocumentoById(String id) {
+    public Optional<TipoDocumento> findTipoDocumentoById(int id) {
         String sql = "SELECT id,nombre FROM tipodocumento WHERE id = ?";
         try (Connection connection = database.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setString(1, id);
+            statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
                 String nombre = resultSet.getString("nombre");
-                TipoDocumento document = new TipoDocumento(nombre);
-                return document;
+                TipoDocumento document = new TipoDocumento(id,nombre);
+                return Optional.of(document);
             }
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return Optional.empty();
     }
 
     @Override
-    public void updateTipoDocumento(String id) {
+    public void updateTipoDocumento(int id) {
         String query = "UPDATE tipodocumento SET nombre = ? WHERE id = ?";
         try (Connection connection = database.getConnection();
         PreparedStatement statement = connection.prepareStatement(query)) {
@@ -100,6 +101,7 @@ public class TipoDocumentoRepository implements TipoDocumentoService {
             System.out.print("Ingrese el nombre de tipodocumento: ");
             String nombre = sc.nextLine();
             statement.setString(1, nombre);
+            statement.setInt(2, id);
             statement.executeUpdate();
             connection.close();
             

@@ -17,7 +17,7 @@ public class CiudadRepository implements CiudadService {
 
     @Override
     public void createCiudad(Ciudad ciudad) {
-        String sql = "INSERT INTO ciudad (nombres,pais) VALUES (?,?)";
+        String sql = "INSERT INTO ciudad (nombre, pais) VALUES (?,?)";
         try (Connection connection = database.getConnection();
         PreparedStatement statement =connection.prepareStatement(sql)){
            
@@ -56,7 +56,7 @@ public class CiudadRepository implements CiudadService {
             ResultSet rs = statement.executeQuery(sql);){
                 while (rs.next()){
                     int id = rs.getInt("id");
-                    String nombre = rs.getString("nombres");
+                    String nombre = rs.getString("nombre");
                     int pais = rs.getInt("pais");
                     Ciudad Ciudad = new Ciudad(id, nombre, pais);
                     ciudad.add(Ciudad);
@@ -96,7 +96,7 @@ public class CiudadRepository implements CiudadService {
 
     @Override
     public void updateCiudad(Ciudad ciudad) {
-        String query = "UPDATE cliente SET nombres = ?, Id_ciudad = ? WHERE id = ?";
+        String query = "UPDATE ciudad SET nombre = ?, pais = ? WHERE id = ?";
         try (Connection connection = database.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, ciudad.getNombre());
@@ -105,7 +105,7 @@ public class CiudadRepository implements CiudadService {
 
             statement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("Error al actualizar el cliente: " + e.getMessage());
+            System.out.println("Error al actualizar la ciudad: " + e.getMessage());
             e.printStackTrace();
         }
         

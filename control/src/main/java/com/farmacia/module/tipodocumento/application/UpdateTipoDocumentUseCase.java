@@ -9,7 +9,7 @@ public class UpdateTipoDocumentUseCase {
         this.tdservice = tdservice;
     }
 
-    public void execute(String id) {
+    public void execute(int id) {
         tdservice.updateTipoDocumento(id);
     }
 }

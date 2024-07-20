@@ -9,7 +9,7 @@ public class updateUseCase {
         this.paisService = paisService;
     }
 
-    public void execute(String id) {
+    public void execute(int id) {
         paisService.updatePais(id);
     }
 }

@@ -2,11 +2,11 @@ package com.farmacia.module.pais.domain.entity;
 
 public class Pais {
     private String nombre;
-    private String id;
+    private int id;
 
     
 
-    public Pais(String nombre, String id) {
+    public Pais(String nombre, int id) {
         this.nombre = nombre;
         this.id = id;
     }
@@ -23,11 +23,11 @@ public class Pais {
         this.nombre = nombre;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

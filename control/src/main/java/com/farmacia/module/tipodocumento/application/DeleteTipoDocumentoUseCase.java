@@ -12,7 +12,7 @@ public class DeleteTipoDocumentoUseCase {
         this.tdservice = tdservice;
     }
 
-    public void execute(String id) {
+    public void execute(int id) {
         tdservice.deleteTipoDocumento(id);
     }
 }

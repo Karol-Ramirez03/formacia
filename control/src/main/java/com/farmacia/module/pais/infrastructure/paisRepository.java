@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 import com.farmacia.database.database;
@@ -22,7 +23,7 @@ public class paisRepository implements paisService {
         try (Connection connection = database.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
-            statement.setString(2, Pais.getNombre());
+            statement.setString(1, Pais.getNombre());
 
             statement.executeUpdate();
             System.out.println("pais creado: " + Pais.getNombre());
@@ -34,14 +35,15 @@ public class paisRepository implements paisService {
     }
 
     @Override
-    public void updatePais(String id) {
+    public void updatePais(int id) {
         String query = "UPDATE pais SET nombre = ? WHERE id = ?";
         try (Connection connection = database.getConnection();
         PreparedStatement statement = connection.prepareStatement(query)) {
         
-            System.out.print("Ingrese el nombre de la persona: ");
+            System.out.print("Ingrese el nombre del pais: ");
             String nombre = scanner.nextLine();
             statement.setString(1, nombre);
+            statement.setInt(2, id);
             statement.executeUpdate();
             connection.close();
             
@@ -52,11 +54,11 @@ public class paisRepository implements paisService {
     
 
     @Override
-    public void deletePais(String id) {
+    public void deletePais(int id) {
         String sql = "DELETE FROM pais WHERE id = ?";
         try (Connection connection = database.getConnection();
         PreparedStatement ps = connection.prepareStatement(sql)){
-            ps.setString(1, id);
+            ps.setInt(1, id);
             ps.executeUpdate();
             connection.close();
         } catch (SQLException e) {
@@ -65,23 +67,23 @@ public class paisRepository implements paisService {
     }
 
     @Override
-    public Pais findPaisById(String id) {
+    public Optional<Pais> findPaisById(int id) {
         String sql = "SELECT * FROM pais WHERE id = ?";
         try (Connection connection = database.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setString(1, id);
+            statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
                 String nombre = resultSet.getString("nombre");
                 Pais pais = new Pais(nombre);
-                return pais;
+                return Optional.of(pais);
             }
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return Optional.empty();
     }
     @Override
     public List<Pais> findAllPais() {
@@ -93,7 +95,7 @@ public class paisRepository implements paisService {
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-                String id = resultSet.getString("id");
+                int id = resultSet.getInt("id");
                 String nombre = resultSet.getString("nombre");
                 Pais pais = new Pais(nombre, id);
                 paises.add(pais);

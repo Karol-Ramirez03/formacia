@@ -1,7 +1,9 @@
 package com.farmacia.module.tipodocumento.adapter.in;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
+
 
 import com.farmacia.module.tipodocumento.application.AddTipoDocumentUseCase;
 import com.farmacia.module.tipodocumento.application.DeleteTipoDocumentoUseCase;
@@ -58,19 +60,27 @@ public void start() {
 
                 case 2:
                     System.out.print(">> Ingrese el id del tipo documento: ");
-                    String idUpdate = scanner.nextLine();
+                    int idUpdate = scanner.nextInt();
 
                     updateDocument.execute(idUpdate);
                     break;
 
                 case 3:
                     System.out.print(">> Ingrese el id del tipo documento: ");
-                    String idfind = scanner.nextLine();
-                    idDocuments.execute(idfind);
+                    int idfind = scanner.nextInt();
+                    Optional<TipoDocumento> td = idDocuments.execute(idfind);
+
+                    if (td.isPresent()) {
+                        TipoDocumento ptd = td.get();
+                        System.out.println("Id: " + ptd.getId() + " NOMBRE: " + ptd.getNombre());
+                    } else {
+                        System.out.println("Cliente no encontrado.");
+                    }
+                break;
 
                 case 4:
                     System.out.print(">> Ingrese el id del tipo documento: ");
-                    String idEliminar = scanner.nextLine();
+                    int idEliminar = scanner.nextInt();
                     deleteDocument.execute(idEliminar);
                     break;
 

@@ -17,7 +17,7 @@ public class BarrioRepository implements BarrioService {
 
     @Override
     public void createBarrio(Barrio Barrio) {
-        String sql = "INSERT INTO barrio (nombres,ciudad) VALUES (?,?)";
+        String sql = "INSERT INTO barrio (nombre ,ciudad) VALUES (?,?)";
         try (Connection connection = database.getConnection();
         PreparedStatement statement =connection.prepareStatement(sql)){
            
@@ -55,7 +55,7 @@ public class BarrioRepository implements BarrioService {
             ResultSet rs = statement.executeQuery(sql);){
                 while (rs.next()){
                     int id = rs.getInt("id");
-                    String nombre = rs.getString("nombres");
+                    String nombre = rs.getString("nombre");
                     int ciudad = rs.getInt("ciudad");
                     Barrio barrios = new Barrio(id, nombre, ciudad);
                     barrio.add(barrios);
@@ -93,7 +93,7 @@ public class BarrioRepository implements BarrioService {
 
     @Override
     public void updateBarrio(Barrio Barrio) {
-        String query = "UPDATE cliente SET nombres = ?, ciudad = ? WHERE id = ?";
+        String query = "UPDATE barrio SET nombres = ?, ciudad = ? WHERE id = ?";
         try (Connection connection = database.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, Barrio.getNombre());
