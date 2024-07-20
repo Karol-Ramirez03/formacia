@@ -1,7 +1,6 @@
 package com.farmacia.module.cliente.infrastructure;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,7 +16,6 @@ import com.farmacia.module.cliente.domain.service.clienteService;
 
 public class clienteRepository implements clienteService {
     
-
     @Override
     public Optional<cliente> findbyid(String id) {
        String sql = "SELECT id, tipoDocumento, nombres, apellidos, edad, fechaNacimiento, barrio FROM cliente WHERE id = ?";
