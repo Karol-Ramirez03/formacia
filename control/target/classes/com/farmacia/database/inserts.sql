@@ -1,56 +1,44 @@
 
+INSERT INTO pais (nombre) VALUES 
+('Colombia'), 
+('Argentina');
 
-INSERT INTO pais (nombre) VALUES ('Argentina');
-INSERT INTO pais (nombre) VALUES ('Chile');
+INSERT INTO tipoDocumento (nombre) VALUES 
+('CC'), 
+('NIT');
 
--- Insertar tipos de documento
-INSERT INTO tipoDocumento (nombre) VALUES ('DNI');
-INSERT INTO tipoDocumento (nombre) VALUES ('Pasaporte');
+INSERT INTO ciudad (nombre, pais) VALUES 
+('Bogotá', 1), 
+('Buenos Aires', 2);
 
--- Insertar ciudades
-INSERT INTO ciudad (nombre, pais) VALUES ('Buenos Aires', 1);
-INSERT INTO ciudad (nombre, pais) VALUES ('Santiago', 2);
+INSERT INTO barrio (nombre, ciudad) VALUES 
+('Chapinero', 1), 
+('Palermo', 2);
 
--- Insertar barrios
-INSERT INTO barrio (nombre, ciudad) VALUES ('Palermo', 1);
-INSERT INTO barrio (nombre, ciudad) VALUES ('Providencia', 2);
-
--- Insertar clientes
 INSERT INTO cliente (id, tipoDocumento, nombres, apellidos, edad, fechaNacimiento, barrio) VALUES 
-('12345678', 1, 'Juan', 'Pérez', 30, '1994-03-15', 1),
-('87654321', 2, 'Ana', 'Gómez', 25, '1999-07-20', 2);
+('123456789', 1, 'Juan', 'Perez', 30, '1993-01-01', 1),
+('987654321', 2, 'Maria', 'Gomez', 25, '1998-02-02', 2);
 
+INSERT INTO unidad_medida (descripcion) VALUES 
+('Unidad'), 
+('Gramos');
 
+INSERT INTO laboratorio (nombre) VALUES 
+('Laboratorio Roche'), 
+('Bayer');
 
-INSERT INTO unidad_medida (descripcion) VALUES ('Mililitros');
-INSERT INTO unidad_medida (descripcion) VALUES ('Gramos');
+INSERT INTO proveedor (nombre, contacto) VALUES 
+('Proveedor A', 'contactoA@example.com'), 
+('Proveedor B', 'contactoB@example.com');
 
+INSERT INTO via_administracion (descripcion) VALUES 
+('Oral'), 
+('Intravenosa');
 
-INSERT INTO laboratorio (nombre) VALUES ('Laboratorio XYZ');
-INSERT INTO laboratorio (nombre) VALUES ('Laboratorio ABC');
+INSERT INTO principio_activo (nombre) VALUES 
+('Paracetamol'), 
+('Ibuprofeno');
 
-
-INSERT INTO proveedor (nombre, contacto) VALUES ('Proveedor 1', 'contacto1@proveedor.com');
-INSERT INTO proveedor (nombre, contacto) VALUES ('Proveedor 2', 'contacto2@proveedor.com');
-
-
-INSERT INTO producto (
-    codigo_producto, nombre_producto, registro_invima, via_administracion, principio_activo, 
-    unidad_medida_id, laboratorio_id, proveedor_id, presentacion, fecha_caducidad, 
-    valor_compra, margen_ganancia, stock, stock_min, stock_max
-) VALUES (
-    'P001', 'Paracetamol', 'INVIMA1234', 'Oral', 'Paracetamol', 
-    1, 1, 1, 'Tabletas', '2025-12-31', 
-    500.00, 20.00, 100, 10, 200
-);
-
-INSERT INTO producto (
-    codigo_producto, nombre_producto, registro_invima, via_administracion, principio_activo, 
-    unidad_medida_id, laboratorio_id, proveedor_id, presentacion, fecha_caducidad, 
-    valor_compra, margen_ganancia, stock, stock_min, stock_max
-) VALUES (
-    'P002', 'Ibuprofeno', 'INVIMA5678', 'Oral', 'Ibuprofeno', 
-    2, 2, 2, 'Cápsulas', '2024-06-30', 
-    300.00, 15.00, 200, 20, 500
-);
-
+INSERT INTO producto (codigo_producto, nombre_producto, registro_invima, via_administracion_id, principio_activo_id, unidad_medida_id, laboratorio_id, proveedor_id, presentacion, fecha_caducidad, valor_compra, margen_ganancia, stock, stock_min, stock_max) VALUES 
+('P001', 'Paracetamol 500mg', 'INV001', 1, 1, 1, 1, 1, 'Caja', '2025-01-01', 10.00, 20.00, 100, 10, 200),
+('P002', 'Ibuprofeno 200mg', 'INV002', 2, 2, 2, 2, 2, 'Botella', '2024-12-01', 15.00, 25.00, 200, 20, 300);

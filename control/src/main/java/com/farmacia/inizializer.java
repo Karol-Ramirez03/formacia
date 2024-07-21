@@ -35,6 +35,13 @@ import com.farmacia.module.tipodocumento.application.FindTipoDocumentAllUseCase;
 import com.farmacia.module.tipodocumento.application.FindTipoDocumentByIdUseCase;
 import com.farmacia.module.tipodocumento.application.UpdateTipoDocumentUseCase;
 import com.farmacia.module.tipodocumento.infrastructure.TipoDocumentoRepository;
+import com.farmacia.module.unidadMedida.adapter.in.UnidadMedidaConsoleAdapter;
+import com.farmacia.module.unidadMedida.application.AddUnidadMedidaUseCase;
+import com.farmacia.module.unidadMedida.application.DeleteUnidadMedidaUseCase;
+import com.farmacia.module.unidadMedida.application.FindUnidadMedidaByIdUseCase;
+import com.farmacia.module.unidadMedida.application.FindUnidadMedidaUseCase;
+import com.farmacia.module.unidadMedida.application.UpdateUnidadMedidaUseCase;
+import com.farmacia.module.unidadMedida.infrastructure.UnidadMedidaRepository;
 
 public class inizializer {
 
@@ -99,6 +106,21 @@ public class inizializer {
         BarrioConsoleAdapter console = new BarrioConsoleAdapter(addBarrio, deleteBarrio, allBarrios, idBarrio, updateBarrio); 
         
         console.start();
+    }
+
+
+    //PRODUCTOS
+    public void UnidadMedidaStart(){
+        UnidadMedidaRepository medidaRepository = new UnidadMedidaRepository();
+         AddUnidadMedidaUseCase addUnidad = new AddUnidadMedidaUseCase(medidaRepository);
+         DeleteUnidadMedidaUseCase deleteUnidad = new DeleteUnidadMedidaUseCase(medidaRepository);
+         FindUnidadMedidaUseCase allUnidad = new FindUnidadMedidaUseCase(medidaRepository);
+         FindUnidadMedidaByIdUseCase idUnidad = new FindUnidadMedidaByIdUseCase(medidaRepository);
+         UpdateUnidadMedidaUseCase updateUnidad = new UpdateUnidadMedidaUseCase(medidaRepository);
+
+         UnidadMedidaConsoleAdapter console = new UnidadMedidaConsoleAdapter(addUnidad, deleteUnidad, allUnidad, idUnidad, updateUnidad);
+         
+         console.start();
     }
     
 }

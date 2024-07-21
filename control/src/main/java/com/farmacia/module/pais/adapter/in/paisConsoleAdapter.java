@@ -9,7 +9,6 @@ import com.farmacia.module.pais.application.addpaisUseCase;
 import com.farmacia.module.pais.application.deleteUseCase;
 import com.farmacia.module.pais.application.updateUseCase;
 import com.farmacia.module.pais.domain.entity.Pais;
-import com.farmacia.module.tipodocumento.domain.entity.TipoDocumento;
 import com.farmacia.module.pais.application.findAllPaisUseCase;
 import com.farmacia.module.pais.application.findIdPaisUseCase;
 
