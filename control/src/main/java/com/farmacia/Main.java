@@ -19,11 +19,7 @@ public class Main {
         //principioactivo
         //viaadministracion
 
-//falta 
-        //laboratorio
-        //proveedor
-        //principioactivo
-        //viaadministracion
+
         
         String titulo = """
                 █▀▀ █▀█ █▀█ █▀▄▀█ █▀█ █▀▀ █ █▀█

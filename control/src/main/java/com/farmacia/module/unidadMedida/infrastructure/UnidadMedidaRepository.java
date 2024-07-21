@@ -60,7 +60,7 @@ public class UnidadMedidaRepository implements UnidadMedidaService{
                 int id = rs.getInt("id");
                 String descripcion = rs.getString("descripcion");
                 UnidadMedida unidadm = new UnidadMedida(descripcion);
-                um.add(unidadm);
+                um.add(id,unidadm);
             }
             connection.close();
         } catch (SQLException e) {

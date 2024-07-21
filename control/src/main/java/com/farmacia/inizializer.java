@@ -1,5 +1,12 @@
 package com.farmacia;
 
+import com.farmacia.module.PrincipioActivo.adapter.PrincipioActivoConsoleAdapter;
+import com.farmacia.module.PrincipioActivo.application.AddPrincipioActivoUseCase;
+import com.farmacia.module.PrincipioActivo.application.DeletePrricipioActivoUseCase;
+import com.farmacia.module.PrincipioActivo.application.FindPrincipioActivoAllUseCase;
+import com.farmacia.module.PrincipioActivo.application.FindPrincipioActivoByIdUseCase;
+import com.farmacia.module.PrincipioActivo.application.UpdatePrincipioActivoUseCase;
+import com.farmacia.module.PrincipioActivo.infrastruture.PrincipioActivoRepository;
 import com.farmacia.module.barrio.adapter.in.BarrioConsoleAdapter;
 import com.farmacia.module.barrio.application.AddBarrioUseCase;
 import com.farmacia.module.barrio.application.DeleteBarrioUseCase;
@@ -21,6 +28,13 @@ import com.farmacia.module.cliente.application.findAllUseCase;
 import com.farmacia.module.cliente.application.findIdUseCase;
 import com.farmacia.module.cliente.application.updateClienteUseCase;
 import com.farmacia.module.cliente.infrastructure.clienteRepository;
+import com.farmacia.module.laboratorio.adapter.in.LaboratorioConsoleAdapter;
+import com.farmacia.module.laboratorio.application.AddLaboratorioUseCase;
+import com.farmacia.module.laboratorio.application.DeleteLaboratorioUseCase;
+import com.farmacia.module.laboratorio.application.FindLaboratorioAllUseCase;
+import com.farmacia.module.laboratorio.application.FindLaboratorioByIdUseCase;
+import com.farmacia.module.laboratorio.application.UpdateLaboratorioUseCase;
+import com.farmacia.module.laboratorio.infrastructure.LaboratorioRepository;
 import com.farmacia.module.pais.adapter.in.paisConsoleAdapter;
 import com.farmacia.module.pais.application.addpaisUseCase;
 import com.farmacia.module.pais.application.deleteUseCase;
@@ -28,6 +42,20 @@ import com.farmacia.module.pais.application.findAllPaisUseCase;
 import com.farmacia.module.pais.application.findIdPaisUseCase;
 import com.farmacia.module.pais.application.updateUseCase;
 import com.farmacia.module.pais.infrastructure.paisRepository;
+import com.farmacia.module.producto.adapter.in.ProductoConsoleAdapter;
+import com.farmacia.module.producto.application.AddProductoUseCase;
+import com.farmacia.module.producto.application.DeleteProductoUseCase;
+import com.farmacia.module.producto.application.FindProductoAllUseCase;
+import com.farmacia.module.producto.application.FindProductoByIdUseCase;
+import com.farmacia.module.producto.application.UpdateProductoUseCase;
+import com.farmacia.module.producto.infrastructure.ProductoRepository;
+import com.farmacia.module.proveedor.adapter.in.ProveedorConsoleAdapter;
+import com.farmacia.module.proveedor.application.AddProveedorUseCase;
+import com.farmacia.module.proveedor.application.DelectProveedorUseCase;
+import com.farmacia.module.proveedor.application.FindProveedorAllUseCase;
+import com.farmacia.module.proveedor.application.FindProveedorByIdUseCase;
+import com.farmacia.module.proveedor.application.UpdateProveedorUseCase;
+import com.farmacia.module.proveedor.infrastructure.ProveedorRepository;
 import com.farmacia.module.tipodocumento.adapter.in.TipoDocumentoConsoleAdapter;
 import com.farmacia.module.tipodocumento.application.AddTipoDocumentUseCase;
 import com.farmacia.module.tipodocumento.application.DeleteTipoDocumentoUseCase;
@@ -42,6 +70,13 @@ import com.farmacia.module.unidadMedida.application.FindUnidadMedidaByIdUseCase;
 import com.farmacia.module.unidadMedida.application.FindUnidadMedidaUseCase;
 import com.farmacia.module.unidadMedida.application.UpdateUnidadMedidaUseCase;
 import com.farmacia.module.unidadMedida.infrastructure.UnidadMedidaRepository;
+import com.farmacia.module.viaAdministracion.adapter.in.ViaAdministracionConsoleAdapter;
+import com.farmacia.module.viaAdministracion.application.AddViaAdministraccionUseCase;
+import com.farmacia.module.viaAdministracion.application.DeleteViaAdministracionUseCase;
+import com.farmacia.module.viaAdministracion.application.FindViaAdministracionAllUseCase;
+import com.farmacia.module.viaAdministracion.application.FindViaAdministracionByIDUseCase;
+import com.farmacia.module.viaAdministracion.application.UpdateViaAdministracionUseCase;
+import com.farmacia.module.viaAdministracion.infrastructure.ViaAdministracionRepository;
 
 public class inizializer {
 
@@ -123,4 +158,73 @@ public class inizializer {
          console.start();
     }
     
+
+    //PRODUCTO
+    public void ProductoStart(){
+        ProductoRepository productoRepository = new ProductoRepository();
+        AddProductoUseCase addProduct = new AddProductoUseCase(productoRepository);
+        DeleteProductoUseCase delProduct = new DeleteProductoUseCase(productoRepository);
+        FindProductoAllUseCase allProduct = new FindProductoAllUseCase(productoRepository);
+        FindProductoByIdUseCase idProduct = new FindProductoByIdUseCase(productoRepository);
+        UpdateProductoUseCase updProduct = new UpdateProductoUseCase(productoRepository);
+
+        ProductoConsoleAdapter console = new ProductoConsoleAdapter(addProduct, allProduct, idProduct, delProduct, updProduct);
+        console.start();
+    }
+
+    //VIA ADMINISTRACION
+    public void ViaAdministracionStart(){
+        ViaAdministracionRepository viaRepository = new ViaAdministracionRepository();
+        AddViaAdministraccionUseCase addVia = new AddViaAdministraccionUseCase(viaRepository);
+        DeleteViaAdministracionUseCase delVia = new DeleteViaAdministracionUseCase(viaRepository);
+        FindViaAdministracionAllUseCase allVia = new FindViaAdministracionAllUseCase(viaRepository);
+        FindViaAdministracionByIDUseCase idVia = new FindViaAdministracionByIDUseCase(viaRepository);
+        UpdateViaAdministracionUseCase updVia = new UpdateViaAdministracionUseCase(viaRepository);
+
+        ViaAdministracionConsoleAdapter console = new ViaAdministracionConsoleAdapter(addVia, delVia, allVia, idVia, updVia);
+        console.start();
+
+    }
+    //PRINCIPIO ACTIVO
+    public void PrincipioActivoStart(){
+        PrincipioActivoRepository actRepository = new PrincipioActivoRepository();
+        AddPrincipioActivoUseCase addAct = new AddPrincipioActivoUseCase(actRepository);
+        DeletePrricipioActivoUseCase delAct = new DeletePrricipioActivoUseCase(actRepository);
+        FindPrincipioActivoAllUseCase allAct = new FindPrincipioActivoAllUseCase(actRepository);
+        FindPrincipioActivoByIdUseCase idAct = new FindPrincipioActivoByIdUseCase(actRepository);
+        UpdatePrincipioActivoUseCase updAct = new UpdatePrincipioActivoUseCase(actRepository);
+
+        PrincipioActivoConsoleAdapter console = new PrincipioActivoConsoleAdapter(addAct, delAct, allAct, idAct, updAct); 
+        console.start();
+    }
+
+
+
+    public void laboratorioStart(){
+        LaboratorioRepository laboratorioRepository = new LaboratorioRepository();
+        AddLaboratorioUseCase AddLabor = new  AddLaboratorioUseCase(laboratorioRepository);
+        DeleteLaboratorioUseCase delLabor = new DeleteLaboratorioUseCase(laboratorioRepository);
+        FindLaboratorioAllUseCase allLabor = new FindLaboratorioAllUseCase(laboratorioRepository);
+        FindLaboratorioByIdUseCase idLabor = new FindLaboratorioByIdUseCase(laboratorioRepository);
+        UpdateLaboratorioUseCase updLabor = new UpdateLaboratorioUseCase(laboratorioRepository) ;
+
+        LaboratorioConsoleAdapter console = new LaboratorioConsoleAdapter(AddLabor, delLabor, allLabor, idLabor, updLabor);
+
+        console.start();
+    }
+
+
+    //PROVEEDOR
+    public void proveedorStart(){
+        ProveedorRepository proveedorRepository = new ProveedorRepository();
+        AddProveedorUseCase addProveedor = new AddProveedorUseCase(proveedorRepository);
+        DelectProveedorUseCase delProveedor = new DelectProveedorUseCase(proveedorRepository);
+        FindProveedorAllUseCase allProveedor = new FindProveedorAllUseCase(proveedorRepository);
+        FindProveedorByIdUseCase idProveedor = new FindProveedorByIdUseCase(proveedorRepository);
+        UpdateProveedorUseCase updProveedor = new UpdateProveedorUseCase(proveedorRepository);
+
+        ProveedorConsoleAdapter console = new ProveedorConsoleAdapter(addProveedor, delProveedor, allProveedor, idProveedor, updProveedor);
+        console.start();
+    }
 }
+ 

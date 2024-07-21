@@ -6,6 +6,9 @@ public class PrincipioActivo {
 
 
     
+    public PrincipioActivo(String nombre) {
+        this.nombre = nombre;
+    }
     public PrincipioActivo(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;

@@ -10,6 +10,10 @@ public class ViaAdministracion {
         this.descripcion = descripcion;
     }
 
+    public ViaAdministracion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     public int getId() {
         return id;
     }
