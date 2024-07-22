@@ -86,15 +86,14 @@ public class ProductoConsoleAdapter {
                     int stockMin = scanner.nextInt();
                     System.out.print(">> Ingrese el stock máximo del producto: ");
                     int stockMax = scanner.nextInt();
-                    System.out.print(">> Ingrese el valor de venta del producto: ");
-                    double valorVenta = scanner.nextDouble();
+                    
                     
                     // Crear el producto
                     Producto producto = new Producto(
                         codigoProducto, nombreProducto, registroInvima, viaAdministracion,
                         principioActivo, unidadMedida, laboratorio, proveedor,
                         presentacion, fechaCaducidad, valorCompra, margenGanancia,
-                        stock, stockMin, stockMax, valorVenta
+                        stock, stockMin, stockMax
                     );                    
                     productoAdd.addProducto(producto);
                     break;
@@ -168,7 +167,9 @@ public class ProductoConsoleAdapter {
                                            " Registro Invima: " + productoEncontrado.getRegistroInvima() +
                                            " Valor Compra: " + productoEncontrado.getValorCompra() +
                                            " Margen Ganancia: " + productoEncontrado.getMargenGanancia() +
-                                           " Stock: " + productoEncontrado.getStock());
+                                           " Stock: " + productoEncontrado.getStock()+
+                                           " Valor Venta: " + productoEncontrado.getValorVenta());
+                                           
                     } else {
                         System.out.println("Producto no encontrado.");
                     }
@@ -188,14 +189,14 @@ public class ProductoConsoleAdapter {
                                            " Registro Invima: " + prod.getRegistroInvima() +
                                            " Valor Compra: " + prod.getValorCompra() +
                                            " Margen Ganancia: " + prod.getMargenGanancia() +
-                                           " Stock: " + prod.getStock());
+                                           " Stock: " + prod.getStock()+
+                                           " Valor Venta: " + prod.getValorVenta());
                         System.out.println("---------");
                     }
                     break;
 
                 case 6:
                     System.out.println("Saliendo...");
-                    scanner.close(); // Cerrar el scanner al salir
                     return; // Salir del método start()
 
                 default:

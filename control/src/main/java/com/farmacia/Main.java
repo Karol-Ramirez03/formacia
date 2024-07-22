@@ -1,33 +1,19 @@
 package com.farmacia;
 
+import com.farmacia.view.adapter.in.MenuInicio;
 
 public class Main {
+
     public static void main(String[] args) {
-        
-        inizializer inicio = new inizializer();
-//data cliente
-        //cliente 
-        //pais
-        //tipo documento
-        //barrio 
-        //ciudad
-//data producto
-        //producto
-        //laboratorio
-        //proveedor
-        //unidadMedida
-        //principioactivo
-        //viaadministracion
-
-
-        
+      MenuInicio inicio = new MenuInicio();  
+    
         String titulo = """
                 █▀▀ █▀█ █▀█ █▀▄▀█ █▀█ █▀▀ █ █▀█
                 █▀  █▀█ █▀▄ █░▀░█ █▀█ █▄▄ █ █▀█
                 """;
         System.out.println(titulo);
 
-        inicio.BarrioStart();
+        inicio.showMainMenu();
         
     }
 }

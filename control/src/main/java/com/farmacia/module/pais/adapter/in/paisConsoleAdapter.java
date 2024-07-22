@@ -86,7 +86,6 @@ public class paisConsoleAdapter {
 
                 case 6:
                     System.out.println("Saliendo...");
-                    scanner.close(); // Cerrar el scanner al salir
                     return; // Salir del método start()
 
                 default:

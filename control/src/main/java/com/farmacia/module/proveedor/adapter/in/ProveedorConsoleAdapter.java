@@ -88,7 +88,7 @@ public void start() {
                                 
                                 break;
                             case 2:
-                                System.out.print(">> Ingrese el id del pais: ");
+                                System.out.print(">> Ingrese el nuevo contacto: ");
                                 ProveedorActual.setContacto(scanner.nextLine());
                                 break;
                             case 3:
@@ -134,7 +134,6 @@ public void start() {
 
                 case 6:
                     System.out.println("Saliendo...");
-                    scanner.close(); // Cerrar el scanner al salir
                     return; // Salir del método start()
 
                 default:

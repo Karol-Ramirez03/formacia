@@ -59,8 +59,8 @@ public class UnidadMedidaRepository implements UnidadMedidaService{
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String descripcion = rs.getString("descripcion");
-                UnidadMedida unidadm = new UnidadMedida(descripcion);
-                um.add(id,unidadm);
+                UnidadMedida unidadm = new UnidadMedida(id, descripcion);
+                um.add(unidadm);
             }
             connection.close();
         } catch (SQLException e) {
@@ -77,8 +77,8 @@ public class UnidadMedidaRepository implements UnidadMedidaService{
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                String nombre = resultSet.getString("nombre");
-                UnidadMedida unidadMedida = new UnidadMedida(nombre);
+                String nombre = resultSet.getString("descripcion");
+                UnidadMedida unidadMedida = new UnidadMedida(id,nombre);
                 return Optional.of(unidadMedida);
             }
             connection.close();
@@ -92,7 +92,7 @@ public class UnidadMedidaRepository implements UnidadMedidaService{
 
     @Override
     public void updateUnidadMedida(int id) {
-        String query = "UPDATE unidad_medida SET nombre = ? WHERE id = ?";
+        String query = "UPDATE unidad_medida SET descripcion = ? WHERE id = ?";
         try (Connection connection = database.getConnection();
         PreparedStatement statement = connection.prepareStatement(query)) {
         

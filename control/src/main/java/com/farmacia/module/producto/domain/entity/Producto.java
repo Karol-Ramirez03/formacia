@@ -21,6 +21,27 @@ public class Producto {
     private Double valorVenta;
 
 
+    public Producto(String codigoProducto, String nombreProducto, String registroInvima, int viaAdministracion,
+            int principioActivo, int unidadMedida, int laboratorio, int proveedor, String presentacion,
+            Date fechaCaducidad, Double valorCompra, Double margenGanancia, Integer stock, Integer stockMin,
+            Integer stockMax) {
+        this.codigoProducto = codigoProducto;
+        this.nombreProducto = nombreProducto;
+        this.registroInvima = registroInvima;
+        this.viaAdministracion = viaAdministracion;
+        this.principioActivo = principioActivo;
+        this.unidadMedida = unidadMedida;
+        this.laboratorio = laboratorio;
+        this.proveedor = proveedor;
+        this.presentacion = presentacion;
+        this.fechaCaducidad = fechaCaducidad;
+        this.valorCompra = valorCompra;
+        this.margenGanancia = margenGanancia;
+        this.stock = stock;
+        this.stockMin = stockMin;
+        this.stockMax = stockMax;
+    }
+
     public Producto(String codigoProducto, String nombreProducto, String registroInvima, int viaAdministracion, int principioActivo, int unidadMedida, int laboratorio, int proveedor, String presentacion, Date fechaCaducidad, Double valorCompra, Double margenGanancia, Integer stock, Integer stockMin, Integer stockMax, Double valorVenta) {
         
         this.codigoProducto = codigoProducto;

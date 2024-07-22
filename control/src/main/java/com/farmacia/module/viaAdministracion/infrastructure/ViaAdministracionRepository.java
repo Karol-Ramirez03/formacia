@@ -10,7 +10,6 @@ import java.util.Optional;
 import java.util.Scanner;
 
 import com.farmacia.database.database;
-import com.farmacia.module.pais.domain.entity.Pais;
 import com.farmacia.module.viaAdministracion.domain.entity.ViaAdministracion;
 import com.farmacia.module.viaAdministracion.domain.service.ViaAdministracionService;
 
@@ -27,7 +26,7 @@ public class ViaAdministracionRepository implements ViaAdministracionService {
             statement.setString(1, viaAdministracion.getDescripcion());
 
             statement.executeUpdate();
-            System.out.println("pais creado: " + viaAdministracion.getDescripcion());
+            System.out.println("via de administracion creado: " + viaAdministracion.getDescripcion());
             connection.close();
 
         } catch (SQLException e) {

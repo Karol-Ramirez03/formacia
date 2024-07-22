@@ -19,7 +19,7 @@ public class LaboratorioRepository implements LaboratorioService{
 
     @Override
     public void createLaboratorio(Laboratorio laboratorio) {
-        String sql = "INSERT INTO laboratorio (nombre) VALUES (?,)";
+        String sql = "INSERT INTO laboratorio (nombre) VALUES (?)";
 
         try (Connection connection = database.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {

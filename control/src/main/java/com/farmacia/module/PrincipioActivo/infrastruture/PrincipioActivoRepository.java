@@ -27,7 +27,7 @@ public class PrincipioActivoRepository implements PrincipioActivoService {
             statement.setString(1, principioActivo.getNombre());
 
             statement.executeUpdate();
-            System.out.println("pais creado: " + principioActivo.getNombre());
+            System.out.println("Principio Activo creado: " + principioActivo.getNombre());
             connection.close();
 
         } catch (SQLException e) {

@@ -12,6 +12,6 @@ public class FindPrincipioActivoByIdUseCase {
         this.principioService = principioService;
     }
     public Optional<PrincipioActivo> execute(int id){
-        return principioService.findPrincipioActivoById(0);
+        return principioService.findPrincipioActivoById(id);
     }
 }

@@ -11,6 +11,7 @@ import com.farmacia.module.viaAdministracion.application.FindViaAdministracionAl
 import com.farmacia.module.viaAdministracion.application.FindViaAdministracionByIDUseCase;
 import com.farmacia.module.viaAdministracion.application.UpdateViaAdministracionUseCase;
 import com.farmacia.module.viaAdministracion.domain.entity.ViaAdministracion;
+import com.farmacia.view.adapter.in.MenuInicio;
 
 public class ViaAdministracionConsoleAdapter {
     private final AddViaAdministraccionUseCase addVia;
@@ -85,8 +86,7 @@ public void start() {
                     break;
 
                 case 6:
-                    System.out.println("Saliendo...");
-                    scanner.close(); // Cerrar el scanner al salir
+                    System.out.println("Saliendo...");     
                     return; // Salir del método start()
 
                 default:

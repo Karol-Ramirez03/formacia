@@ -10,7 +10,6 @@ import com.farmacia.module.laboratorio.application.FindLaboratorioAllUseCase;
 import com.farmacia.module.laboratorio.application.FindLaboratorioByIdUseCase;
 import com.farmacia.module.laboratorio.application.UpdateLaboratorioUseCase;
 import com.farmacia.module.laboratorio.domain.entity.Laboratorio;
-import com.farmacia.module.proveedor.application.DelectProveedorUseCase;
 
 public class LaboratorioConsoleAdapter {
     private final AddLaboratorioUseCase AddLabor;
@@ -70,7 +69,7 @@ public class LaboratorioConsoleAdapter {
                         Laboratorio ptd = td.get();
                         System.out.println("Id: " + ptd.getId() + " NOMBRE: " + ptd.getNombre());
                     } else {
-                        System.out.println("Cliente no encontrado.");
+                        System.out.println("Laboratorio no encontrado.");
                     }
                 break;
                 case 4:
@@ -89,7 +88,6 @@ public class LaboratorioConsoleAdapter {
 
                 case 6:
                     System.out.println("Saliendo...");
-                    scanner.close(); // Cerrar el scanner al salir
                     return; // Salir del método start()
 
                 default:
